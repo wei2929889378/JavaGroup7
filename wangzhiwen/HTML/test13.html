@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>拖拽元素</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: #fa280c;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" draggable="true"></div>
+    <script>
+      //绑定拖拽事件
+      let box = document.querySelector('.box')
+      //拖拽开始
+      box.ondragstart = function () {
+        console.log('拖拽开始')
+      }
+      //拖拽离开
+      box.ondragleave = function () {
+        console.log('拖拽离开')
+      }
+      //拖拽结束
+      box.ondragend = function () {
+        console.log('拖拽结束')
+      }
+      //拖拽过程全局调用
+      box.ondrag = function () {
+        console.log('拖拽')
+      }
+    </script>
+  </body>
+</html>
