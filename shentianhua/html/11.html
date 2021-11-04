@@ -1,0 +1,138 @@
+//表单类型
+<!DOCTYPE html>
+<htmllang="en">
+
+<head>
+    <metacharset="UTF-8">
+    <metahttp-equiv="X-UA-Compatible"content="IE=edge">
+    <metaname="viewport"content="width=device-width, initial-scale=1.0">
+    <title>表单类型</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #F7F7F7;
+            }
+            
+        form {
+            max-width: 500px;
+            width: 100%;
+            margin: 32pxauto0;font-size: 16px;
+                }
+            
+        label {
+            display: block;
+            margin: 10px0;
+                }
+                
+        input {
+            width: 100%;
+            height: 25px;
+            margin-top: 2px;
+            display: block;
+                }
+    </style>
+</head>
+                
+<body>
+    <formaction="">
+        <fieldset>
+        <legend>表单类型</legend>
+        <labelfor="">        
+            email: <inputtype="email"name="email"required>
+        </label>
+        <labelfor="">        
+            color: <inputtype="color"name="color">
+        </label>
+        <labelfor="">        
+            url: <inputtype="url"name='url'>
+        </label>
+        <labelfor="">        
+            number: <inputtype="number"step="3"name="number">
+        </label>
+        <labelfor="">        
+            range: <inputtype="range"name="range"value="100">
+        </label>
+        <labelfor="">        
+            search: <inputtype="search"name="search">
+        </label>
+        <labelfor="">        
+            tel: <inputtype="tel"name="tel">
+        </label>
+        <labelfor="">        
+            time: <inputtype="time"name="time">
+        </label>
+        <labelfor="">        
+            date: <inputtype="date"name="date">
+        </label>
+        <labelfor="">        
+            datetime: <inputtype="datetime">
+        </label><labelfor="">        
+            week: <inputtype="week"name="month">
+        </label>
+        <labelfor="">        
+            month: <inputtype="month"name="month">
+    </label>
+    <labelfor="">        
+        datetime-local: <inputtype="datetime-local"name="datetime-local">
+    </label>
+    <inputtype="submit">
+    </fieldset>
+    </form>
+</body>
+
+</html>
+
+//表单属性
+<!DOCTYPE html>
+<htmllang="en">
+    
+<head>
+    <metacharset="UTF-8">
+    <metahttp-equiv="X-UA-Compatible"content="IE=edge">
+    <metaname="viewport"content="width=device-width, initial-scale=1.0">
+    <title>表单属性</title>
+    <style>
+    form {
+        width: 100%;
+        /* 最大宽度*/
+        max-width: 640px;
+        /* 最小宽度*/
+        min-width: 320px;
+        margin: 0auto;
+        font-family: "Microsoft Yahei";
+        font-size: 20px;    
+    }
+    
+    input {
+        display: block;width: 100%;
+        height: 30px;margin: 10px0;    
+        }
+        </style>
+    </head>
+        
+    <body>
+        <formaction="">
+            <fieldset>
+                <legend>表单属性</legend>
+                <labelfor="">用户名：<inputtype="text"placeholder="例如：username"autofocusname="userName"autocomplete="on"required/>
+            </label>
+            
+            <labelfor="">
+                电话：<inputtype="tel"pattern="1\d{10}"/>
+            </label>
+            
+            <labelfor="">        
+                multiple的表单: <inputtype="file"multiple>
+            </label>
+            
+            <!-- 上传文件-->
+            <inputtype="file"name="file"multiple/>
+            
+            <inputtype="submit"/>
+        </fieldset>
+    </form>
+
+</body>
+
+</html>
