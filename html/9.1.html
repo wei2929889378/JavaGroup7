@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>draggable</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background-color: rgb(216, 208, 103);
+        }
+        .two {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            left: 300px;
+            top: 100px;
+            border: 1px solid #000;
+            background-color: rgb(103, 150, 179);
+        }
+    </style>
+</head>
+<body>
+    <div class="one" draggable="true"></div>
+    <div class="two"></div>
+    <script>
+        let two = document.querySelector('.two')
+        two.ondragenter = function() {
+            console.log("来了.")
+        }
+        two.ondragleave = function() {
+            console.log("走了..")
+        }
+        two.ondragover = function(e) {
+            e.preventDefault()
+            console.log("over...")
+        }
+        two.ondrop = function() {
+            console.log("松开鼠标...")
+        }
+    </script>
+    
+</body>
+</html>

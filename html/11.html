@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单的视频播放器</title>
+    <link rel="stylesheet" href="font-awesome.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        figcaption {
+            text-align: center;
+            line-height: 150px;
+            font-family: "Microsoft Yahei";
+            font-size: 24px;
+        }
+
+        .player {
+            width: 720px;
+            height: 360px;
+            margin: 10px auto;
+            border: 1px solid #000;
+            background: url("loading.gif") center no-repeat #000;
+            background-size: 100px 100px;
+            position: relative;
+            border-radius: 20px;
+        }
+
+        .player video {
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .controls {
+            width: 700px;
+            height: 40px;
+            background-color: rgba(255, 255, 0, 0.3);
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            border-radius: 10px;
+        }
+
+        .switch {
+            font-family:'FontAwesome';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 10px;
+            top: 10px;
+            text-align: center;
+            line-height: 20px;
+            color: yellow;
+        }
+
+        .progress {
+            width: 432px;
+            height: 10px;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.4);
+            left: 40px;
+            top: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .cur-progress {
+            width: 50%;
+            height: 10px;
+            background-color: #fff;
+        }
+
+        .time {
+            width: 120px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            color: #fff;
+            position: absolute;
+            left: 510px;
+            top: 10px;
+            font-size: 12px;
+        }
+
+        .extend {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 20px;
+            top: 10px;
+            text-align: center;
+            line-height: 20px;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <figure>
+       <figcaption>视频案例</figcaption> 
+       <div class="player">
+           <video src=""></video>
+           <div class="controls">
+               <a href="#" class="switch icon-play"></a>
+               <div class="progress">
+                   <div class="cur-progress"></div>
+               </div>
+               <div class="time">
+                   <span class="cur-time">00:00:00</span>/<span class="total-time">00:00:00</span>
+               </div>
+               <a href="#" class="extend icon-resize-full"></a>
+           </div>
+       </div>
+    </figure>
+    <script>
+        let video = document.querySelector('video');
+        let playBtn = document.querySelector('.switch');
+        let curProgress = document.querySelector('.cur-progress');
+        let curTime = document.querySelector('.cur-time');
+        let totalTime = document.querySelector('.total-time');
+        let extend = document.querySelector('.extend');
+        let tTime = 0;
+        playBtn.onclick = function() {
+            if (video.paused) {
+                video.play();
+                this.classList.remove('icon-play')
+                this.classList.add('icon-pause')
+            }
+        }
+        video.oncanplay = function() {
+            tTime = video.duration;
+            console.log(tTime)
+            let h = Math.floor(tTime / 3600)
+            let m = Math.floor(tTime % 3600 / 60)
+            let s = Math.floor(tTime % 60)
+            h = h >= 10 ? h : "0" + h
+            m = m >= 10 ? m : "0" + m
+            s = s >= 10 ? s : "0" + s
+            console.log(h)
+            console.log(m)
+            console.log(s)
+            totalTime.innerHTML = `${h}:${m}:${s}`
+        }
+
+        video.ontimeupdate = function() {
+            let cTime = video.currentTime
+            let h = Math.floor(tTime / 3600)
+            let m = Math.floor(tTime % 3600 / 60)
+            let s = Math.floor(tTime % 60)
+            h = h >= 10 ? h : "0" + h
+            m = m >= 10 ? m : "0" + m
+            s = s >= 10 ? s : "0" + s
+            curTime.innerHTML = `${h}:${m}:${s}`
+            var value = cTime / tTime
+            curProgress.style.width = value * 100 + "%"
+        }
+
+        extend.onclick = function() {
+            video.webkitRequestFullScreen()
+        }
+    </script>
+    
+</body>
+</html>
